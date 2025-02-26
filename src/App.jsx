@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-  const [advice, setAdvice] = useState("Click the button to get new advice.");
+  const [advice, setAdvice] = useState("Click the button to get new advice.");// the start up text w/ setAdvice for the output
 
-  async function fetchAdvice() {
+  async function fetchAdvice() {// simple fetch function to get the advice from the api
     const response = await fetch("https://api.adviceslip.com/advice");
     const data = await response.json();
-    return data.slip.advice;
+    return data.slip.advice;// .slip.advice is the path to the advice in the json object
   }
 
-  const updateAdvice = async () => {
+  const updateAdvice = async () => {// simple function to update the advice
     console.log("Updating advice...");
     const newAdvice = await fetchAdvice();
     setAdvice(newAdvice);
